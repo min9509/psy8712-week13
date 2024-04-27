@@ -12,3 +12,4 @@ conn <-dbConnect(MariaDB(),
                  host="mysql-prod5.oit.umn.edu",
                  port=3306,
                  ssl.ca='../mysql_hotel_umn_20220728_interm.cer')
+
