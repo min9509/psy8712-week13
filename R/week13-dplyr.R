@@ -65,5 +65,33 @@ city_managers <- week13_tbl %>%
   summarize(num_manager = n())
 print(city_managers)
 
-# 
+# 4-4. the mean and standard deviation
+# performance_group mean_employee sd_employee
+# 1 Bottom                     4.74       0.537
+# 2 Middle                     4.58       0.509
+# 3 Top                        4.33       0.604
 
+perfor_employ <- week13_tbl %>%
+  # grouping by 3 levels
+  group_by(performance_group) %>%
+  # get mean and SD
+  summarize(
+    mean_employee = mean(yrs_employed),
+    sd_employee = sd(yrs_employed))
+print(perfor_employ)
+
+# 4-5. Each manager's location classification
+# type employee_id test_score (Part of results)
+# 1   Suburban    c764744b        485
+# 2   Suburban    8205a876        439
+# 3   Suburban    1be5eccb        402
+# ...
+
+sorted_managers <- week13_tbl %>%
+  select(type, employee_id, test_score) %>%
+  # alphabetical order by location type and then descending order of test score
+  arrange(type, desc(test_score))
+print(sorted_managers)
+
+
+  
