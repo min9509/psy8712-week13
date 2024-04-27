@@ -48,13 +48,11 @@ unique_managers <- week13_tbl %>%
 print(unique_managers)
 
 # 4-3. A summary of the number of managers split by location
-# city          num_manager
+# city          num_manager (Part of results)
 # 1 Chicago                61
 # 2 Houston                20
 # 3 New York              183
-# 4 Orlando                20
-# 5 San Francisco          48
-# 6 Toronto               189
+# ...
 
 city_managers <- week13_tbl %>% 
   #  only include those who were not originally hired as managers
