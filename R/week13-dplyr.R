@@ -19,9 +19,17 @@ employees_tbl <-  dbGetQuery(conn, "SELECT * FROM cla_tntlab.datascience_employe
 testscores_tbl <- dbGetQuery(conn, "SELECT * FROM cla_tntlab.datascience_testscores;") 
 offices_tbl <- dbGetQuery(conn, "SELECT * FROM cla_tntlab.datascience_offices;")
 
-# Export tbls as csv
+# Export tbls as csv (save in the data file)
 write_csv(employees_tbl, "../data/employees.csv")
 write_csv(testscores_tbl, "../data/testscores.csv")
 write_csv(offices_tbl, "../data/offices.csv")
 
+# Make week13_tbl by combining 3 csv
+week13_tbl <- employees_tbl %>%
+  left_join(testscores_tbl, by = "employee_id") %>%
+  left_join(offices_tbl, by = c("city" = "office")) %>%
+  filter(!is.na(test_score))
+
+# Export tbls as csv (save in the out file)
+write_csv(week13_tbl, "../out/week13.csv")
 
